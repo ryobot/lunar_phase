@@ -11,6 +11,20 @@
 { (now - 地相基準時刻) / 地球公転周期 } の小数点以下
  */
 
+var data = {};
+
+var jsonhttp = new XMLHttpRequest();
+jsonhttp.onreadystatechange = function () {
+  if (jsonhttp.readyState == 4) {
+    if (jsonhttp.status == 200) {
+      data = JSON.parse(jsonhttp.responseText);
+      onDateChange();
+    }
+  }
+}
+jsonhttp.open("GET", "./lunar_phase.json");
+jsonhttp.send();
+
 function floatFormat( number, n ) {
     var _pow = Math.pow( 10 , n ) ;
     return Math.round( number * _pow ) / _pow ;
@@ -21,7 +35,14 @@ function onDateChange () {
 
     date = new Date(datestr);
     lunarPhaseBase = new Date(data.lunarPhaseBase);
-    lunarPos = (date - lunarPhaseBase)/(data.lunarRevPeriod*86400000) - (date - lunarPhaseBase)/(data.earthRevPeriod*86400000);
+
+    //lunarPos = (date - lunarPhaseBase)/(data.lunarRevPeriod*86400000) - (date - lunarPhaseBase)/(data.earthRevPeriod*86400000);
+    now = date;
+    LPB = lunarPhaseBase;
+    LRP = data.lunarRevPeriod*86400000;
+    ERP = data.earthRevPeriod*86400000;
+    lunarPos = eval(data.formula);
+
     lunarPhase = floatFormat(lunarPos - Math.floor(lunarPos), 3);
     document.getElementById("lunarPhase").value = lunarPhase;
 
@@ -29,14 +50,6 @@ function onDateChange () {
     earthPos = (date - earthPhaseBase)/(data.earthRevPeriod*86400000);
     earthPhase = floatFormat(earthPos - Math.floor(earthPos), 3);
     document.getElementById("earthPhase").value = earthPhase;
-    
-    // for noise bg:
-    day = Math.floor(lunarPhase*28);
-    season = Math.floor(earthPhase*24) + 6;
-    if (season >= 24) season -= 24;
-    resumeSeason();
-    resumeDay();
-    updateImg();
 }
 
 $(function() {
