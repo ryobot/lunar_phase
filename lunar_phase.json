@@ -3,5 +3,5 @@
     "lunarRevPeriod":27.321662,
     "earthPhaseBase":"2016/6/23 3:12:08",
     "earthRevPeriod":365.2421904,
-    "formula":"(now - LPB)/LRP - (now - LPB)/ERP"
+    "formula":"(T - T0)/Lp - (T - T0)/Ep"
 }

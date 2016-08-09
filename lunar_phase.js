@@ -37,19 +37,24 @@ function onDateChange () {
     lunarPhaseBase = new Date(data.lunarPhaseBase);
 
     //lunarPos = (date - lunarPhaseBase)/(data.lunarRevPeriod*86400000) - (date - lunarPhaseBase)/(data.earthRevPeriod*86400000);
-    now = date;
-    LPB = lunarPhaseBase;
-    LRP = data.lunarRevPeriod*86400000;
-    ERP = data.earthRevPeriod*86400000;
+    T = date;
+    T0 = lunarPhaseBase;
+    Lp = data.lunarRevPeriod*86400000;
+    Ep = data.earthRevPeriod*86400000;
     lunarPos = eval(data.formula);
 
     lunarPhase = floatFormat(lunarPos - Math.floor(lunarPos), 3);
     document.getElementById("lunarPhase").value = lunarPhase;
-
+/*
     earthPhaseBase = new Date(data.earthPhaseBase);
     earthPos = (date - earthPhaseBase)/(data.earthRevPeriod*86400000);
     earthPhase = floatFormat(earthPos - Math.floor(earthPos), 3);
     document.getElementById("earthPhase").value = earthPhase;
+*/
+    document.getElementById("earthRevPeriod").value = data.earthRevPeriod;
+    document.getElementById("lunarRevPeriod").value = data.lunarRevPeriod;
+    document.getElementById("lunarPhaseBase").value = data.lunarPhaseBase;
+    document.getElementById("formula").value = data.formula;
 }
 
 $(function() {
