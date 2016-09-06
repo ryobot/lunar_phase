@@ -47,13 +47,15 @@ $datestr = date("Y/m/d H:i:s", $now);
     <!-- data -->
     <tr>
     <td colspan = "2"><div class="board" style="background: #aab;">
-        <h5>月相 <input type="text" id="lunarPhase" value="0" readonly size="6" /></h5>        
+        <h1>月相 <font size="+3"><input type="text" id="lunarPhase" value="0" readonly size="6" /></font></h1>     
         <table>
-            <tr><td>地球の公転周期 (Ep) </td><td><input type="text" id="earthRevPeriod" value="0" size="20" /></td></tr>
-            <tr><td>月の公転周期　 (Lp) </td><td><input type="text" id="lunarRevPeriod" value="0" size="20" /></td></tr>
-            <tr><td>月相の基準時間 (T0) </td><td><input type="text" id="lunarPhaseBase" value="0" size="20" /></td></tr>
-            <tr><td>月相の計算式　 </td><td><input type="text" id="formula" value="0" size="40" /></td></tr>
+            <tr><td>地球の公転周期 (Ep) </td><td><input type="text" id="earthRevPeriod" value="0" size="20" onKeyUp="onDataChange()"/></td></tr>
+            <tr><td>月の公転周期　 (Lp) </td><td><input type="text" id="lunarRevPeriod" value="0" size="20" onKeyUp="onDataChange()" /></td></tr>
+            <tr><td>月相の基準時間 (T0) </td><td><input type="text" id="lunarPhaseBase" value="0" size="20" onKeyUp="onDataChange()" /></td></tr>
+            <tr><td>月相の計算式　 </td><td><input type="text" id="formula" value="0" size="30" onKeyUp="onDataChange()" />の小数点以下</td></tr>
         </table>
+        <button onClick="saveData()">OK</button>
+        <button onClick="loadData()">キャンセル</button>
     </td>
     </tr>
 </table>
