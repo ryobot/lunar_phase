@@ -46,8 +46,12 @@ $datestr = date("Y/m/d H:i:s", $now);
     </tr>
     <!-- data -->
     <tr>
-    <td colspan = "2"><div class="board" style="background: #aab;">
-        <h1>月相 <font size="+3"><input type="text" id="lunarPhase" value="0" readonly size="6" /></font></h1>     
+    <td colspan="2"><div class="board" style="background: #aab;">
+        <table class="tb_lp"><tr>
+            <td><h5>月相 <input type="text" id="lunarPhase" value="0" readonly size="6" /></h5></td>
+            <td><div class='opr_button'><a href='javascript:editSettings()'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div></td>
+        </tr></table>
+        <div id="settings" style="display:none">
         <table>
             <tr><td>地球の公転周期 (Ep) </td><td><input type="text" id="earthRevPeriod" value="0" size="20" onKeyUp="onDataChange()"/></td></tr>
             <tr><td>月の公転周期　 (Lp) </td><td><input type="text" id="lunarRevPeriod" value="0" size="20" onKeyUp="onDataChange()" /></td></tr>
@@ -56,6 +60,7 @@ $datestr = date("Y/m/d H:i:s", $now);
         </table>
         <button onClick="saveData()">OK</button>
         <button onClick="loadData()">キャンセル</button>
+        </div>
     </td>
     </tr>
 </table>

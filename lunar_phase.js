@@ -116,6 +116,14 @@ function onDateChange () {
     document.getElementById("formula").value = data.formula;
 }
 
+function editSettings() {
+    if ( document.getElementById("settings").style.display === "none" ) {
+        document.getElementById("settings").style.display = "block";
+    } else {
+        document.getElementById("settings").style.display = "none";
+    }
+}
+
 $(function() {
     //$.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
     $( "#datepicker" ).datepicker({

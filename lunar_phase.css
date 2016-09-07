@@ -44,7 +44,7 @@ table.sliders td {
 }
 div.board {
     border-radius: 10px;
-    padding: 5px;
+    padding: 0px 5px;
 }
 div.loader {
     border-radius: 10px;
@@ -80,4 +80,22 @@ td.label {
 }
 td.value {
     width: 50px;
+}
+
+/** operation button **/
+.opr_button a {
+    width: 30px;
+    height: 30px;
+    background: url('icon_op.png') no-repeat;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.tb_lp {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.tb_lp td:last-child {
+    text-align: right;
 }
